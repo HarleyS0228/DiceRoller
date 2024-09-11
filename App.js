@@ -1,11 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import { useState } from 'react';
+
+
 
 export default function App() {
+
+  const [diceRoll, setDiceRoll] = useState(1);
+
+  const rollDice = () => {
+    const randomRoll = Math.floor(Math.random() * 6) + 1;
+    setDiceRoll(randomRoll);
+  };
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text style={styles.title}>Dice Roller</Text>
+      <Text style={styles.dice}>{diceRoll}</Text>
+      <Button title="Roll the Dice" onPress={rollDice} />
     </View>
   );
 }
